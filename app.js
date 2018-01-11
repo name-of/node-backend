@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 
 const port = process.env.PORT || 5000;
 
-const routes = require('./routes');
+const routes = require('./api/routes/routes');
 
 routes(app);
 

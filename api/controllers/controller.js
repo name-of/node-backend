@@ -1,5 +1,5 @@
-const accessTokenModify = require('./api_actions/modify-access-token');
-const postScheduler = require('./api_actions/schedule-post');
+const accessTokenModify = require('./helpers/modify-access-token');
+const postScheduler = require('./helpers/schedule-post');
 
 exports.homepage = function(req, res) {
     res.status(200)
