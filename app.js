@@ -14,6 +14,10 @@ app.use(bodyParser.json());
 
 const port = process.env.PORT || 5000;
 
+const routes = require('./routes');
+
+routes(app);
+
 app.listen(port, (err) => {
     if (err) console.log(err);
     else {
