@@ -1,18 +1,20 @@
+'use strict';
 const express = require('express');
 const path = require('path');
 let console = require('./console-logger.js');
 
-//import * as firebase from "firebase-admin";
-//const serviceAccount = require("./../serviceAccountKey.json");
+// import * as firebase from "firebase-admin";
+// const serviceAccount = require("./../serviceAccountKey.json");
 
 const app = express();
 
 const port = process.env.PORT || 5000;
 
 app.listen(port, (err) => {
-    if(err) console.log(err);
-    else
+    if (err) console.log(err);
+    else {
         console.log(`server started on port ${port}`);
+    }
 });
 
 
