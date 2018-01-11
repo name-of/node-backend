@@ -5,10 +5,12 @@ const path = require('path');
 
 const app = express();
 
-const port = 5000;
+const port = process.env.PORT || 5000;
 
-app.listen(port , () => {
-    console.log(`server started on port ${port}`);
+app.listen(port, (err) => {
+    if(err) console.log(err);
+    else
+        console.log(`server started on port ${port}`);
 });
 
 
