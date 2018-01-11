@@ -33,8 +33,7 @@ exports.schedulePost = (req, res) => {
         } else {
             res.status(200)
             .send(req.params);
-            console.log(__filename.split('/').pop() + ' Scheduled');
+            console.log(__filename.split('/').pop() + ' Post Scheduled');
         }
     });
 };
-
