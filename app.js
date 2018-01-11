@@ -1,5 +1,7 @@
 const express = require('express');
 const path = require('path');
+let console = require('./console-logger.js');
+
 //import * as firebase from "firebase-admin";
 //const serviceAccount = require("./../serviceAccountKey.json");
 
