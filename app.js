@@ -1,12 +1,16 @@
 'use strict';
 const express = require('express');
 const path = require('path');
+const bodyParser = require('body-parser');
 let console = require('./console-logger.js');
 
 // import * as firebase from "firebase-admin";
 // const serviceAccount = require("./../serviceAccountKey.json");
 
 const app = express();
+
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
 const port = process.env.PORT || 5000;
 
