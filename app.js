@@ -2,7 +2,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-let console = require('./console-logger.js');
+let console = require('./lib/console-logger');
 
 // import * as firebase from "firebase-admin";
 // const serviceAccount = require("./../serviceAccountKey.json");
