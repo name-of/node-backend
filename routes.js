@@ -10,11 +10,14 @@ module.exports = function(app) {
     .get(controller.page404)
     .put(controller.newAccessTok);
 
-    app.use(function(req, res) {
-      res.status(404)
-        .send({
-          error: req.url + ' not found',
-          cause: 'api call to invalid endpoint.',
-        });
-    });
+  app.route('/schedule_post')
+    .post(controller.schedulePost);
+
+  app.use(function(req, res) {
+    res.status(404)
+      .send({
+        error: req.url + ' not found',
+        cause: 'api call to invalid endpoint.',
+      });
+  });
 };
