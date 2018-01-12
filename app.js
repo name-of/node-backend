@@ -1,11 +1,8 @@
 'use strict';
 const express = require('express');
-const path = require('path');
 const bodyParser = require('body-parser');
 let console = require('./lib/console-logger');
-
-// import * as firebase from "firebase-admin";
-// const serviceAccount = require("./../serviceAccountKey.json");
+require('./lib/firebase/firebase-connect');
 
 const app = express();
 
@@ -24,11 +21,3 @@ app.listen(port, (err) => {
         console.log(`server started on port ${port}`);
     }
 });
-
-
-/*
-firebase.initializeApp({
-    credential: firebase.credential.cert(serviceAccount),
-    databaseURL: "https://name-of.firebaseio.com"
-  });
-  */
