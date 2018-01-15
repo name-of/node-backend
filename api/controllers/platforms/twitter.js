@@ -1,34 +1,63 @@
 'use strict';
 
-const client = require('twitter');
-const OAuth2 = require('OAuth').OAuth2;
+const Twitter = require('twitter');
+const OAuth2 = require('oauth').OAuth2;
+const https = require('https');
+const curl = require('curl');
 
-// copy pasted code,no idea how to use...
+// move key, secret to env file
 
-const oauth2 = new OAuth2('8Vk6W8iXRf07mWb1jXwAiDMjc', 'afLtnqd0mIlSzgoYNe4H0DKZW2ayp2VqJDCxewvhc19xF16Xj9', 'https://api.twitter.com/', null, 'oauth2/token', null);
+const oauth2 = new OAuth2(process.env.TWITTER_USER_KEY,
+                            process.env.TWITTER_USER_SECRET,
+                            'https://api.twitter.com/',
+                            null,
+                            'oauth2/token',
+                            null
+                        );
 
 oauth2.getOAuthAccessToken('', {
     'grant_type': 'client_credentials',
   }, function(e, accessToken) {
         console.log(accessToken);
         let uname = 'aaayush_singh';
+
+        // let client = new Twitter({
+        //     consumer_key: 'process.env.TWITTER_USER_KEY',
+        //     consumer_secret: 'process.env.TWITTER_USER_SECRET',
+        //     bearer_token: accessToken,
+        // });
+
+        // client.get('favorites/list', function(error, tweets, response) {
+        //     if (error) console.log(error.errors);
+        //     console.log(tweets); // The favorites.
+        //     // console.log(response); // Raw response object.
+        // });
         let options = {
             hostname: 'api.twitter.com',
-            path: `/1.1/statuses/user_timeline.json?screen_name=${uname}`,
+            path: `/1.1/statuses/update.json?status=Hello%20World.%20%23testing`,
             headers: {
                 Authorization: 'Bearer ' + accessToken,
             },
+            method: 'POST',
         };
 
-        https.get(options, function(result) {
-            let buffer = '';
-            result.setEncoding('utf8');
-            result.on('data', function(data) {
-                buffer += data;
-            });
-            result.on('end', function() {
-                let tweets = JSON.parse(buffer);
-                console.log(tweets); // the tweets!
-            });
+// POST https://api.twitter.com/1.1/statuses/update.json?status=Maybe%20he%27ll%20finally%20find%20his%20keys.%20%23peterfalk
+
+        https.request(options, function(result) {
+            console.log('posting...');
+            console.log(result);
+            // let buffer = '';
+            // result.setEncoding('utf8');
+            // result.on('data', function(data) {
+            //     buffer += data;
+            // });
+            // result.on('end', function() {
+            //     let tweets = JSON.parse(buffer);
+            //     console.log(tweets); // the tweets!
+            // });
         });
 });
+
+
+// 69 \[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]
+// PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"

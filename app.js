@@ -1,9 +1,12 @@
 'use strict';
 const express = require('express');
 const bodyParser = require('body-parser');
+const dotenv = require('dotenv');
+
 let console = require('./lib/console-logger');
 require('./lib/firebase/firebase-connect');
 
+dotenv.load();
 const app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
