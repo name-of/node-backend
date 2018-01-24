@@ -23,7 +23,10 @@
     "twitter": "^1.7.1"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "eslint-config-google": "^0.9.1",
-    "nodemon": "^1.14.10"
+    "nodemon": "^1.14.10",
+    "webpack": "^3.10.0"
   }
 }
